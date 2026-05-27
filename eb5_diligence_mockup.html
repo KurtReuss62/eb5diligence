@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EB5 Diligence — Website Mockup</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand:       #D85A30;
+    --brand-light: #FAECE7;
+    --brand-dark:  #993C1D;
+    --dark:        #1C1C1E;
+    --mid:         #48484A;
+    --muted:       #8A8A8E;
+    --border:      #E2E2E2;
+    --surface:     #F8F7F5;
+    --white:       #FFFFFF;
+    --green:       #3B6D11;
+    --radius-sm:   6px;
+    --radius-md:   10px;
+    --radius-lg:   14px;
+    --max:         1120px;
+  }
+
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--dark);
+    padding: 0 40px;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-size: 15px; font-weight: 700; color: var(--white); letter-spacing: -0.3px; }
+  .nav-logo span { color: var(--brand); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-btn {
+    background: var(--brand); color: var(--white); border: none;
+    border-radius: var(--radius-sm); padding: 8px 18px;
+    font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  section { padding: 80px 0; }
+  section.alt { background: var(--surface); }
+
+  .section-label {
+    font-size: 11px; font-weight: 700; color: var(--brand);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+  }
+  h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 16px; }
+  .lead { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 640px; }
+
+  /* ── HERO ── */
+  .hero { padding: 80px 0 60px; }
+  .hero-inner { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; }
+  .hero-eyebrow {
+    display: inline-block; background: var(--brand-light); color: var(--brand-dark);
+    font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 20px;
+    letter-spacing: 0.4px; margin-bottom: 20px; text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: 44px; font-weight: 800; line-height: 1.15;
+    letter-spacing: -1px; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--brand); }
+  .hero-sub { font-size: 17px; color: var(--mid); line-height: 1.65; margin-bottom: 28px; max-width: 520px; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .badge {
+    background: var(--surface); border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 6px 12px;
+    font-size: 12px; color: var(--mid); font-weight: 500;
+  }
+  .hero-ctas { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .btn-primary {
+    background: var(--brand); color: var(--white); border: none;
+    border-radius: var(--radius-sm); padding: 14px 24px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .btn-outline {
+    background: transparent; color: var(--brand);
+    border: 1.5px solid var(--brand); border-radius: var(--radius-sm);
+    padding: 13px 24px; font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .hero-note { font-size: 12px; color: var(--muted); }
+
+  /* ── REPORT PREVIEW CARD ── */
+  .report-card {
+    background: var(--dark); border-radius: var(--radius-lg);
+    overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  }
+  .rc-titlebar {
+    background: #2C2C2E; padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .rc-dots { display: flex; gap: 6px; }
+  .rc-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .rc-dot.red   { background: #FF5F57; }
+  .rc-dot.amber { background: #FFBD2E; }
+  .rc-dot.green { background: #28CA41; }
+  .rc-label { font-size: 11px; color: #888; margin-left: 4px; }
+  .rc-body { padding: 16px 18px; }
+  .rc-section { font-size: 9px; font-weight: 700; color: var(--brand); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
+  .rc-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 7px 0; border-bottom: 0.5px solid #333336; font-size: 12px;
+  }
+  .rc-row:last-child { border-bottom: none; }
+  .rc-key { color: #BBBBBB; }
+  .rc-val { font-weight: 600; color: var(--white); }
+  .rc-val.ok   { color: #6AB04C; }
+  .rc-val.warn { color: #F0997B; }
+  .rc-footer {
+    background: #2C2C2E; padding: 9px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .rc-meta { font-size: 10px; color: #888; }
+  .rc-sample-tag {
+    background: var(--brand-dark); color: var(--brand-light);
+    font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 40px; }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--brand);
+    color: var(--white); font-size: 16px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+  }
+  .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+  /* ── WHAT YOU GET ── */
+  .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 40px; }
+  .feature-card {
+    background: var(--white); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md); padding: 22px;
+  }
+  .feature-card.highlight {
+    border-color: var(--brand); background: var(--brand-light);
+  }
+  .feature-icon { font-size: 22px; margin-bottom: 12px; }
+  .feature-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .feature-card p { font-size: 13px; color: var(--mid); line-height: 1.55; }
+  .feature-card.highlight h3 { color: var(--brand-dark); }
+  .feature-card.highlight p  { color: var(--brand-dark); opacity: 0.85; }
+
+  /* ── FRAMEWORK ── */
+  .framework-body { display: grid; grid-template-columns: 1fr 280px; gap: 60px; align-items: start; margin-top: 36px; }
+  .framework-text p { font-size: 15px; color: var(--mid); line-height: 1.75; margin-bottom: 16px; }
+  .stats-col { display: flex; flex-direction: column; gap: 14px; }
+  .stat-card {
+    background: var(--white); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md); padding: 20px 22px; text-align: center;
+  }
+  .stat-num { font-size: 36px; font-weight: 700; color: var(--brand); letter-spacing: -1px; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* ── PRICING ── */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+
+  .pricing-card {
+    border-radius: var(--radius-lg); padding: 32px;
+    border: 1.5px solid var(--brand);
+    background: var(--white);
+  }
+  .pricing-card.dark {
+    background: var(--dark); border-color: transparent;
+  }
+
+  .price-badge {
+    display: inline-block; background: var(--brand);
+    color: var(--white); font-size: 10px; font-weight: 700;
+    padding: 4px 10px; border-radius: 4px; text-transform: uppercase;
+    letter-spacing: 0.4px; margin-bottom: 16px;
+  }
+  .price-title { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .price-amount { font-size: 48px; font-weight: 800; color: var(--dark); letter-spacing: -2px; line-height: 1; }
+  .price-amount span { font-size: 16px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+  .pricing-card.dark .price-amount { color: var(--white); }
+  .price-note { font-size: 13px; color: var(--muted); margin: 8px 0 24px; }
+  .pricing-card.dark .price-note { color: #888; }
+
+  .price-divider { border: none; border-top: 0.5px solid var(--border); margin: 20px 0; }
+  .pricing-card.dark .price-divider { border-color: #333336; }
+
+  .price-group { margin-bottom: 20px; }
+  .price-group-label {
+    font-size: 10px; font-weight: 700; color: var(--brand);
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 10px; padding-bottom: 6px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .price-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .price-list li {
+    display: flex; gap: 10px; font-size: 13px; color: var(--mid); line-height: 1.45;
+  }
+  .price-list li::before {
+    content: '✓'; color: var(--brand); font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+  .price-list li strong { color: var(--dark); font-weight: 600; }
+
+  .pricing-card.dark .price-group-label { border-color: #333336; }
+
+  /* Subscription tiers */
+  .sub-tiers { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+  .sub-tier {
+    border-radius: var(--radius-md); padding: 16px 18px;
+    background: #2C2C2E;
+  }
+  .sub-tier.featured { background: var(--brand); }
+  .sub-tier-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 3px; }
+  .sub-tier-label.muted-label { color: #888; }
+  .sub-tier-label.brand-label { color: #F0997B; }
+  .sub-tier-desc { font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 6px; }
+  .sub-tier.featured .sub-tier-desc { color: rgba(255,255,255,0.75); }
+  .sub-tier-price { font-size: 26px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; line-height: 1; }
+  .sub-tier-price span { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.55); }
+  .sub-tier.featured .sub-tier-price span { color: rgba(255,255,255,0.75); }
+  .sub-includes { font-size: 11px; color: #666; margin-top: 14px; }
+
+  .btn-pricing-primary {
+    display: block; width: 100%; background: var(--brand); color: var(--white);
+    border: none; border-radius: var(--radius-sm); padding: 14px;
+    font-size: 14px; font-weight: 600; cursor: pointer; text-align: center;
+    margin-top: 24px;
+  }
+  .btn-pricing-outline {
+    display: block; width: 100%; background: transparent; color: var(--brand);
+    border: 1.5px solid var(--brand); border-radius: var(--radius-sm); padding: 13px;
+    font-size: 14px; font-weight: 600; cursor: pointer; text-align: center;
+    margin-top: 12px;
+  }
+  .btn-pricing-dark {
+    display: block; width: 100%; background: var(--brand); color: var(--white);
+    border: none; border-radius: var(--radius-sm); padding: 14px;
+    font-size: 14px; font-weight: 600; cursor: pointer; text-align: center;
+    margin-top: 24px;
+  }
+  .pricing-footnote { font-size: 12px; color: var(--muted); text-align: center; margin-top: 16px; }
+
+  /* ── FOR LAWYERS ── */
+  .lawyers-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 40px; }
+  .lawyers-item {
+    display: flex; gap: 16px; padding: 22px;
+    background: var(--white); border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+  .lawyers-accent {
+    width: 3px; min-height: 100%; background: var(--brand);
+    border-radius: 2px; flex-shrink: 0;
+  }
+  .lawyers-item h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .lawyers-item p  { font-size: 13px; color: var(--mid); line-height: 1.6; }
+  .lawyers-ctas { display: flex; gap: 14px; margin-top: 36px; }
+
+  /* ── CTA FOOTER ── */
+  .cta-footer {
+    background: var(--dark); padding: 80px 0; text-align: center;
+  }
+  .cta-footer h2 { color: var(--white); font-size: 36px; margin-bottom: 14px; }
+  .cta-footer p  { color: rgba(255,255,255,0.5); font-size: 16px; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cta-footer-btns { display: flex; gap: 14px; justify-content: center; }
+  .btn-white {
+    background: var(--white); color: var(--dark); border: none;
+    border-radius: var(--radius-sm); padding: 15px 28px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .btn-ghost {
+    background: transparent; color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.25); border-radius: var(--radius-sm);
+    padding: 15px 28px; font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+
+  /* ── SITE FOOTER ── */
+  .site-footer {
+    background: var(--surface); border-top: 0.5px solid var(--border);
+    padding: 28px 40px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo { font-size: 14px; font-weight: 700; }
+  .footer-logo span { color: var(--brand); }
+  .footer-note { font-size: 12px; color: var(--muted); }
+
+  /* ── MOCKUP BANNER ── */
+  .mockup-banner {
+    background: var(--brand); color: var(--white);
+    text-align: center; padding: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner       { grid-template-columns: 1fr; }
+    .report-card      { display: none; }
+    .steps            { grid-template-columns: 1fr; gap: 28px; }
+    .features-grid    { grid-template-columns: 1fr 1fr; }
+    .framework-body   { grid-template-columns: 1fr; }
+    .pricing-grid     { grid-template-columns: 1fr; }
+    .lawyers-grid     { grid-template-columns: 1fr; }
+    h2                { font-size: 26px; }
+    .hero h1          { font-size: 32px; }
+    .nav-links        { display: none; }
+    .container        { padding: 0 20px; }
+    section           { padding: 56px 0; }
+  }
+  @media (max-width: 600px) {
+    .features-grid    { grid-template-columns: 1fr; }
+    .cta-footer-btns  { flex-direction: column; align-items: center; }
+    .lawyers-ctas     { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-banner">WEBSITE MOCKUP — eb5diligence.com</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">EB5<span>Diligence</span></div>
+  <div class="nav-links">
+    <a href="#">How It Works</a>
+    <a href="#">Sample Report</a>
+    <a href="#">Pricing</a>
+    <a href="#">For Lawyers</a>
+  </div>
+  <button class="nav-btn">Request Review</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <span class="hero-eyebrow">Independent EB-5 Analysis</span>
+        <h1>You're investing $800,000 for a green card.<br><em>Understand what you're signing.</em></h1>
+        <p class="hero-sub">EB-5 offering documents are written to disclose — not to explain. A Deal Review turns hundreds of pages into a structured, plain-English analysis, cited and independent.</p>
+        <div class="hero-badges">
+          <span class="badge">13 years of EB-5 analysis</span>
+          <span class="badge">108 data points per report</span>
+          <span class="badge">Delivered within one week</span>
+          <span class="badge">$500 flat fee per report</span>
+        </div>
+        <div class="hero-ctas">
+          <button class="btn-primary">Request a Deal Review</button>
+          <button class="btn-outline">View a Sample Report</button>
+        </div>
+        <p class="hero-note">Most investors review 3–4 offerings before committing.</p>
+      </div>
+      <div class="report-card">
+        <div class="rc-titlebar">
+          <div class="rc-dots">
+            <div class="rc-dot red"></div>
+            <div class="rc-dot amber"></div>
+            <div class="rc-dot green"></div>
+          </div>
+          <span class="rc-label">EB-5 Deal Review — Highlights (Sample)</span>
+        </div>
+        <div class="rc-body">
+          <div class="rc-section">Investment Terms</div>
+          <div class="rc-row"><span class="rc-key">Investment per investor</span><span class="rc-val">$800,000</span></div>
+          <div class="rc-row"><span class="rc-key">Structure</span><span class="rc-val">Senior secured loan</span></div>
+          <div class="rc-row"><span class="rc-key">I-956F status</span><span class="rc-val ok">Approved</span></div>
+          <div class="rc-row"><span class="rc-key">Job cushion</span><span class="rc-val ok">+43%</span></div>
+          <div class="rc-row"><span class="rc-key">Lien position</span><span class="rc-val warn">2nd — see Section 3.5</span></div>
+        </div>
+        <div class="rc-footer">
+          <span class="rc-meta">9 sections &nbsp;·&nbsp; 108 data points &nbsp;·&nbsp; fully cited</span>
+          <span class="rc-sample-tag">Sample</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="alt">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2>Three steps from documents to decision</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Document collection</h3>
+        <p>We coordinate with you or the issuer to gather the offering documents needed for analysis.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Offering analysis</h3>
+        <p>Each offering is mapped against a standardized 108-point framework covering terms, capital structure, job creation methodology, and cross-document consistency.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Review and compare</h3>
+        <p>You receive a structured, plain-English report. Most investors compare 3–4 offerings side by side before committing capital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section>
+  <div class="container">
+    <div class="section-label">What You Get</div>
+    <h2>More than an analysis — a tool for action</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <h3>9-section structured report</h3>
+        <p>Every material term organized and explained in plain English with full document citations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Cross-document consistency check</h3>
+        <p>PPM, loan agreement, business plan, and operating agreement compared against each other.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡</div>
+        <h3>Strengths and risks</h3>
+        <p>Document-based findings only, separated from customary EB-5 features. No recommendations, no predictions.</p>
+      </div>
+      <div class="feature-card highlight">
+        <div class="feature-icon">❓</div>
+        <h3>Questions for the issuer</h3>
+        <p>Specific questions derived from gaps and inconsistencies — document-derived and ready to send to the sponsor or your immigration counsel.</p>
+      </div>
+      <div class="feature-card highlight">
+        <div class="feature-icon">⚠️</div>
+        <h3>Critical gaps report</h3>
+        <p>Documents referenced but not provided — and what each gap prevents from being assessed.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="alt">
+  <div class="container">
+    <div class="section-label">Why the Framework Matters</div>
+    <h2>EB-5 documents are written by issuer counsel</h2>
+    <div class="framework-body">
+      <div class="framework-text">
+        <p>They are designed to disclose — not to explain. Terms that appear standard may carry unusual conditions. Documents that should cross-reference each other often don't. A business plan may describe one completion date; the PPM may describe another.</p>
+        <p>The 108-point analytical framework was built specifically to surface these issues — mapping every material term, flagging inconsistencies, and identifying what the documents don't say as clearly as what they do.</p>
+        <p>Developed over 13 years of EB-5 due diligence and updated for the EB-5 Reform and Integrity Act of 2022, the framework has been applied across loan and preferred equity structures, single-JCE and multi-JCE offerings, and hospitality, multifamily, and mixed-use projects.</p>
+      </div>
+      <div class="stats-col">
+        <div class="stat-card">
+          <div class="stat-num">108</div>
+          <div class="stat-label">data points per report</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">13</div>
+          <div class="stat-label">years of EB-5 analysis</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">RIA</div>
+          <div class="stat-label">2022 updated framework</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2>Flat fee. No hidden costs.</h2>
+    <p class="lead">Choose the option that fits how you work.</p>
+
+    <div class="pricing-grid">
+
+      <!-- Per Report -->
+      <div class="pricing-card">
+        <div class="price-title">Per Report</div>
+        <div class="price-amount">$500 <span>per report</span></div>
+        <p class="price-note">Delivered within one week of receiving documents.</p>
+        <hr class="price-divider">
+
+        <div class="price-group">
+          <div class="price-group-label">EB-5 Fund (NCE)</div>
+          <ul class="price-list">
+            <li>Fund structure, entity relationships, and GP/manager authority</li>
+            <li>Loan terms or preferred return mechanics — principal, interest rate, accrual, payment type, initial term, extensions, and maximum term</li>
+            <li>Collateral position, lien priority, intercreditor terms, and LTV analysis</li>
+            <li>Escrow release conditions and deployment mechanics</li>
+            <li>Distribution waterfall and fee schedule</li>
+            <li>I-526E denial refund mechanics, exclusions, and liquidity limitations</li>
+            <li>Enforcement analysis — available remedies and practical constraints</li>
+            <li>Fund administration and RIA 2022 compliance</li>
+          </ul>
+        </div>
+
+        <div class="price-group">
+          <div class="price-group-label">Project</div>
+          <ul class="price-list">
+            <li>TEA qualification — census tract, methodology, unemployment rate, and margin above threshold</li>
+            <li>Project scope, entitlements, and permit status</li>
+            <li>Construction timeline with projected vs. actual milestones</li>
+            <li>Financial projections — revenue assumptions, occupancy, operating expenses, and NOI</li>
+            <li>Exit valuation assumptions — cap rate, implied value, and sensitivity analysis</li>
+            <li>Full sources and uses of funds with reconciliation</li>
+            <li>Job creation analysis — cushion, assumptions, economic model, and per-JCE allocation</li>
+            <li>EB-5 exposure summary — collateral position, repayment dependencies, and timeline risks</li>
+          </ul>
+        </div>
+
+        <div class="price-group">
+          <div class="price-group-label">Management</div>
+          <ul class="price-list">
+            <li>Developer and sponsor credentials and track record as stated in offering documents</li>
+            <li>Key person concentration and succession provisions</li>
+            <li>Related party transactions and affiliated relationships</li>
+            <li>Service provider identification</li>
+          </ul>
+        </div>
+
+        <div class="price-group">
+          <div class="price-group-label">Regional Center &amp; USCIS</div>
+          <ul class="price-list">
+            <li>RC designation, geographic scope, and RIA reaffirmation status</li>
+            <li>I-956F status — approved or pending, with deference implications</li>
+            <li>I-956G annual certification and compliance obligations</li>
+          </ul>
+        </div>
+
+        <div class="price-group">
+          <div class="price-group-label">Findings &amp; Gaps</div>
+          <ul class="price-list">
+            <li>Summary of document-based strengths — project-specific differentiators only</li>
+            <li>Summary of risks and considerations with citations</li>
+            <li><strong>Critical Gaps Report</strong> — missing documents, incomplete disclosures, material discrepancies</li>
+            <li><strong>Questions for the issuer</strong> — document-derived, ready to send</li>
+          </ul>
+        </div>
+
+        <button class="btn-pricing-primary">Request a Report</button>
+      </div>
+
+      <!-- Subscription -->
+      <div class="pricing-card dark">
+        <span class="price-badge">For Attorneys &amp; Agents</span>
+        <div class="price-title" style="color:#888;">Subscription</div>
+        <p style="font-size:15px; color:#AAAAAA; line-height:1.6; margin-bottom:20px;">Online access to Deal Reviews on any active EB-5 project in the market. When a client mentions an offering, look it up.</p>
+
+        <div class="sub-tiers">
+          <div class="sub-tier">
+            <div class="sub-tier-label muted-label">Solo / Small Firm</div>
+            <div class="sub-tier-desc">1–2 EB-5 attorneys</div>
+            <div class="sub-tier-price">$3,600 <span>/ year</span></div>
+          </div>
+          <div class="sub-tier featured">
+            <div class="sub-tier-label brand-label">Active Practice</div>
+            <div class="sub-tier-desc">3+ attorneys or 50+ cases/year</div>
+            <div class="sub-tier-price">$7,200 <span>/ year</span></div>
+          </div>
+        </div>
+
+        <p class="sub-includes">Both plans include full report access and download, Critical Gaps Report, and Questions for the Issuer.</p>
+
+        <button class="btn-pricing-dark">For info about subscriptions</button>
+      </div>
+
+    </div>
+    <p class="pricing-footnote">Most investors purchase 3–4 reports to compare offerings before committing capital.</p>
+  </div>
+</section>
+
+<!-- FOR LAWYERS -->
+<section class="alt" id="forlawyers">
+  <div class="container">
+    <div class="section-label">For Immigration Lawyers</div>
+    <h2>A resource you can refer clients to</h2>
+    <p class="lead">Immigration lawyers cannot provide investment advice — but clients still need independent due diligence before committing $800,000 to an EB-5 investment.</p>
+    <div class="lawyers-grid">
+      <div class="lawyers-item">
+        <div class="lawyers-accent"></div>
+        <div>
+          <h3>Look up any active EB-5 offering, on demand</h3>
+          <p>A subscription provides online access to Deal Reviews on any project currently in the market. When a client mentions an offering, the analysis is already there — structure, collateral position, job cushion, gaps, and questions for the issuer.</p>
+        </div>
+      </div>
+      <div class="lawyers-item">
+        <div class="lawyers-accent"></div>
+        <div>
+          <h3>Aligns with the non-investment advisory role</h3>
+          <p>The report does not recommend for or against investing and does not provide immigration advice. It is a document review, not an advisory opinion — consistent with the role of immigration counsel.</p>
+        </div>
+      </div>
+      <div class="lawyers-item">
+        <div class="lawyers-accent"></div>
+        <div>
+          <h3>Gives clients a structured basis for comparison</h3>
+          <p>Clients reviewing multiple offerings receive a consistent analytical framework for each. Side-by-side comparison becomes straightforward.</p>
+        </div>
+      </div>
+      <div class="lawyers-item">
+        <div class="lawyers-accent"></div>
+        <div>
+          <h3>Generates specific questions for the issuer</h3>
+          <p>The Critical Gaps Report and Questions for the Issuer give clients concrete follow-up items to bring back to the sponsor — or to discuss with counsel before committing capital.</p>
+        </div>
+      </div>
+    </div>
+    <div class="lawyers-ctas">
+      <button class="btn-primary">Refer a Client</button>
+      <button class="btn-outline">For info about subscriptions</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="cta-footer">
+  <div class="container">
+    <h2>Ready to understand the offering?</h2>
+    <p>No documents required to start. We'll reach out to outline next steps and coordinate document collection.</p>
+    <div class="cta-footer-btns">
+      <button class="btn-white">Request a Deal Review</button>
+      <button class="btn-ghost">View a Sample Report</button>
+    </div>
+  </div>
+</section>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logo">EB5<span>Diligence</span></div>
+  <div class="footer-note">Independent document-based due diligence for EB-5 investors. &nbsp;·&nbsp; © 2026 EB5 Diligence</div>
+</footer>
+
+</body>
+</html>

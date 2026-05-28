@@ -95,6 +95,9 @@
     padding: 13px 24px; font-size: 14px; font-weight: 600; cursor: pointer;
   }
   .hero-note { font-size: 12px; color: var(--muted); }
+  .hero-outcomes { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; padding: 20px 22px; background: var(--surface); border-radius: var(--radius-md); border-left: 3px solid var(--brand); }
+  .outcome-item { display: flex; gap: 12px; font-size: 14px; color: var(--dark); font-weight: 500; align-items: center; }
+  .outcome-check { color: var(--brand); font-weight: 700; font-size: 15px; flex-shrink: 0; }
 
   /* ── REPORT PREVIEW CARD ── */
   .report-card {
@@ -156,6 +159,10 @@
   .feature-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
   .feature-card p { font-size: 13px; color: var(--mid); line-height: 1.55; }
   .feature-card.highlight h3 { color: var(--brand-dark); }
+  .feature-full { grid-column: 1 / -1; }
+  .feature-highlight-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .feature-differentiator-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--brand-dark); background: rgba(211,90,48,0.15); display: inline-block; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px; }
+  @media (max-width: 600px) { .feature-highlight-inner { grid-template-columns: 1fr; gap: 24px; } }
   .feature-card.highlight p  { color: var(--brand-dark); opacity: 0.85; }
 
   /* ── FRAMEWORK ── */
@@ -353,6 +360,11 @@
           <span class="badge">Delivered within one week</span>
           <span class="badge">$500 flat fee per report</span>
         </div>
+        <div class="hero-outcomes">
+          <div class="outcome-item"><span class="outcome-check">✓</span><span>What the documents say — and what they don't</span></div>
+          <div class="outcome-item"><span class="outcome-check">✓</span><span>What's missing and why it matters</span></div>
+          <div class="outcome-item"><span class="outcome-check">✓</span><span>Exactly what to ask the issuer</span></div>
+        </div>
         <div class="hero-ctas">
           <button class="btn-primary">Request a Deal Review</button>
           <button class="btn-outline">View a Sample Report</button>
@@ -371,7 +383,7 @@
         <div class="rc-body">
           <div class="rc-section">Investment Terms</div>
           <div class="rc-row"><span class="rc-key">Investment per investor</span><span class="rc-val">$800,000</span></div>
-          <div class="rc-row"><span class="rc-key">Structure</span><span class="rc-val">Senior secured loan</span></div>
+          <div class="rc-row"><span class="rc-key">Preferred return</span><span class="rc-val">0.75%</span></div>
           <div class="rc-row"><span class="rc-key">I-956F status</span><span class="rc-val ok">Approved</span></div>
           <div class="rc-row"><span class="rc-key">Job cushion</span><span class="rc-val ok">+43%</span></div>
           <div class="rc-row"><span class="rc-key">Lien position</span><span class="rc-val warn">2nd — see Section 3.5</span></div>
@@ -431,15 +443,21 @@
         <h3>Strengths and risks</h3>
         <p>Document-based findings only, separated from customary EB-5 features. No recommendations, no predictions.</p>
       </div>
-      <div class="feature-card highlight">
-        <div class="feature-icon">❓</div>
-        <h3>Questions for the issuer</h3>
-        <p>Specific questions derived from gaps and inconsistencies — document-derived and ready to send to the sponsor or your immigration counsel.</p>
-      </div>
-      <div class="feature-card highlight">
-        <div class="feature-icon">⚠️</div>
-        <h3>Critical gaps report</h3>
-        <p>Documents referenced but not provided — and what each gap prevents from being assessed.</p>
+      <div class="feature-card highlight feature-full">
+        <div class="feature-highlight-inner">
+          <div>
+            <div class="feature-differentiator-label">Unique to this service</div>
+            <div class="feature-icon">❓</div>
+            <h3>Questions for the issuer</h3>
+            <p>Every report includes a document-derived list of specific questions — ready to send directly to the sponsor or discuss with your immigration counsel. Not generic questions. Questions drawn from gaps, inconsistencies, and unclear terms in the documents you submitted.</p>
+          </div>
+          <div>
+            <div class="feature-differentiator-label">Unique to this service</div>
+            <div class="feature-icon">⚠️</div>
+            <h3>Critical gaps report</h3>
+            <p>Identifies every document referenced in the offering materials that was not provided for review — and explains what each missing document would have allowed us to assess. You'll know not just what the documents say, but what you haven't been shown.</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -466,10 +484,7 @@
           <div class="stat-num">13</div>
           <div class="stat-label">years of EB-5 analysis</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">RIA</div>
-          <div class="stat-label">2022 updated framework</div>
-        </div>
+  
       </div>
     </div>
   </div>

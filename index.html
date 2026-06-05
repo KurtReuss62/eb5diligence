@@ -38,10 +38,10 @@
     background: var(--white);
     border-bottom: 0.5px solid var(--border);
     padding: 0 40px;
-    height: 64px;
+    height: 76px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-logo img { height: 36px; width: auto; display: block; }
+  .nav-logo img { height: 54px; width: auto; display: block; }
   .nav-links { display: flex; gap: 28px; }
   .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; }
   .nav-links a:hover { color: var(--dark); }
@@ -205,7 +205,7 @@
   .pricing-footnote { font-size: 12px; color: var(--muted); text-align: center; margin-top: 16px; }
 
   /*  FOR LAWYERS  */
-  .lawyers-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 40px; }
+  .lawyers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
   .lawyers-item {
     display: flex; gap: 16px; padding: 22px;
     background: var(--white); border: 0.5px solid var(--border);
@@ -218,6 +218,70 @@
   .lawyers-item h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
   .lawyers-item p  { font-size: 13px; color: var(--mid); line-height: 1.6; }
   .lawyers-ctas { display: flex; gap: 14px; margin-top: 36px; }
+
+  /*  ATTORNEY REFERRAL BLOCK  */
+  .referral-block {
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 0.5px solid var(--border);
+  }
+  .referral-block .section-label { margin-bottom: 14px; }
+  .referral-block h3 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: var(--dark);
+    max-width: 640px;
+  }
+  .referral-block .referral-intro {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 640px;
+    margin-bottom: 28px;
+  }
+  .referral-copy {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--brand);
+    border-radius: var(--radius-md);
+    padding: 24px 26px;
+    max-width: 720px;
+  }
+  .referral-copy p {
+    font-size: 14.5px;
+    color: var(--dark);
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .referral-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+    max-width: 720px;
+  }
+  .btn-copy {
+    background: var(--brand);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 11px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-copy:hover { background: var(--brand-dark); }
+  .copy-confirm {
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .copy-confirm.show { opacity: 1; }
 
   /*  CTA FOOTER  */
   .cta-footer {
@@ -252,6 +316,7 @@
     height: 56px;
     width: auto;
     display: block;
+    mix-blend-mode: screen;
   }
   .footer-note {
     font-size: 12px;
@@ -398,14 +463,14 @@
         <p>Document-based findings only, separated from customary EB-5 features. No recommendations, no predictions.</p>
       </div>
       <div class="feature-card highlight feature-full">
-        <div class="feature-differentiator-label">Ready to use</div>
+        <div class="feature-differentiator-label">What you can act on</div>
         <div class="feature-highlight-inner">
           <div>
             <h3>Questions for the issuer</h3>
             <p>Every report includes a document-derived list of specific questions &mdash; ready to send directly to the sponsor or discuss with your immigration counsel. Not generic questions. Questions drawn from gaps, inconsistencies, and unclear terms in the documents you submitted.</p>
           </div>
           <div>
-            <h3>Gaps and Inconsistencies Identified</h3>
+            <h3>Gaps and inconsistencies identified</h3>
             <p>Identifies every document referenced in the offering materials that was not provided for review &mdash; and explains what each missing document would have allowed us to assess. You&rsquo;ll know not just what the documents say, but what you haven&rsquo;t been shown.</p>
           </div>
         </div>
@@ -432,10 +497,8 @@
   <div class="container">
     <div class="section-label">Pricing</div>
     <h2>Flat fee. No hidden costs.</h2>
-    <p class="lead">Choose the option that fits how you work.</p>
     <div class="pricing-grid">
       <div class="pricing-card">
-        <div class="price-title">Per Report</div>
         <div class="price-amount">$500 <span>per report</span></div>
         <p class="price-note">Delivered within one week of receiving documents.</p>
         <hr class="price-divider">
@@ -502,40 +565,41 @@
 <section class="alt" id="forlawyers">
   <div class="container">
     <div class="section-label">For Immigration Lawyers</div>
-    <h2>A resource you can refer clients to</h2>
-    <p class="lead">Immigration lawyers cannot provide investment advice &mdash; clients still need to perform due diligence.</p>
+    <h2>Your clients are evaluating offerings alone. They don&rsquo;t have to.</h2>
+    <p class="lead">Every EB-5 client eventually asks the same question: is this a good investment? It&rsquo;s the one question immigration counsel can&rsquo;t answer &mdash; and leaving a client to evaluate hundreds of pages of offering documents on their own serves no one. An independent Deal Review gives them a clear, document-based assessment of the offering, so you can point them somewhere credible without stepping outside your role.</p>
     <div class="lawyers-grid">
       <div class="lawyers-item">
         <div class="lawyers-accent"></div>
         <div>
-          <h3>Look up any active EB-5 offering, on demand</h3>
-          <p>A subscription provides online access to Deal Reviews on any project currently in the market. When a client mentions an offering, the analysis is already there &mdash; structure, collateral position, job cushion, gaps, and questions for the issuer.</p>
+          <h3>An unaffiliated party reviews the documents</h3>
+          <p>Your clients get an independent read of the terms, structure, collateral, and risks &mdash; in plain English, from someone with no stake in the offering &mdash; so they understand what they are signing before they sign it.</p>
         </div>
       </div>
       <div class="lawyers-item">
         <div class="lawyers-accent"></div>
         <div>
-          <h3>Aligns with the non-investment advisory role</h3>
-          <p>The report does not recommend for or against investing and does not provide immigration advice. It is a document review, not an advisory opinion &mdash; consistent with the role of immigration counsel.</p>
+          <h3>No recommendation, no exposure</h3>
+          <p>Every offering is assessed against the same framework, independent of any project or sponsor. Pointing a client to it carries no endorsement and keeps your firm clear of investment advice.</p>
         </div>
       </div>
       <div class="lawyers-item">
         <div class="lawyers-accent"></div>
         <div>
-          <h3>Gives clients a structured basis for comparison</h3>
-          <p>Clients reviewing multiple offerings receive a consistent analytical framework for each. Side-by-side comparison becomes straightforward.</p>
-        </div>
-      </div>
-      <div class="lawyers-item">
-        <div class="lawyers-accent"></div>
-        <div>
-          <h3>Generates specific questions for the issuer</h3>
-          <p>The Critical Gaps Report and Questions for the Issuer give clients concrete follow-up items to bring back to the sponsor &mdash; or to discuss with counsel before committing capital.</p>
+          <h3>Clients return with the right questions</h3>
+          <p>Each review surfaces gaps and specific questions for the issuer, so clients come back with concrete points to raise with the sponsor &mdash; or with you &mdash; rather than vague concern.</p>
         </div>
       </div>
     </div>
-    <div class="lawyers-ctas">
-      <button class="btn-primary">Refer a Client</button>
+    <div class="referral-block">
+      <h3>Give your clients a next step in one line</h3>
+      <p class="referral-intro">Share the paragraph below when a client needs to evaluate an offering. It&rsquo;s written to drop straight into an email &mdash; no recommendation, no specific project named, nothing to edit.</p>
+      <div class="referral-copy">
+        <p id="referralText">While this firm does not provide investment advice, clients considering an EB-5 investment may obtain an independent review of the offering documents. EB5 Diligence (eb5diligence.com) provides a document-based analysis covering fund structure, loan terms, collateral, and job creation methodology, and identifies gaps or inconsistencies across the offering materials.</p>
+      </div>
+      <div class="referral-actions">
+        <button class="btn-copy" onclick="copyReferralText()">Copy to Clipboard</button>
+        <span class="copy-confirm" id="copyConfirm">Copied</span>
+      </div>
     </div>
   </div>
 </section>
@@ -685,6 +749,15 @@
       document.body.style.overflow = '';
     }
   });
+
+  function copyReferralText() {
+    var text = document.getElementById('referralText').innerText;
+    navigator.clipboard.writeText(text).then(function() {
+      var confirm = document.getElementById('copyConfirm');
+      confirm.classList.add('show');
+      setTimeout(function() { confirm.classList.remove('show'); }, 2000);
+    });
+  }
 </script>
 
 </body>
